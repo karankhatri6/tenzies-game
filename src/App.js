@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Die from './components/Die';
 import { nanoid } from 'nanoid';
 import Confetti from 'react-confetti';
+import {useWindowSize} from 'react-use';
 
 function App() {
 
@@ -63,10 +64,14 @@ function App() {
         holdDice = {() => holdDice(die.id)}
       />
   ))
+  const { width, height } = useWindowSize()
 
   return (
     <main>
-      {tenzies && <Confetti />
+      {tenzies && <Confetti 
+        width={width}
+        height={height}
+      />
       }
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. 
